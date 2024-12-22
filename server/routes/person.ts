@@ -1,6 +1,6 @@
 import TheMovieDb from '@server/api/themoviedb';
 import Media from '@server/entity/Media';
-import logger from '@server/logger';
+import logger from '../logger';
 import {
   mapCastCredits,
   mapCrewCredits,

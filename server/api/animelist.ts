@@ -1,17 +1,9 @@
-import logger from '@server/logger';
-import fs, { promises as fsp } from 'node:fs';
-import path from 'node:path';
-import { Readable } from 'node:stream';
-import type { ReadableStream } from 'node:stream/web';
-import xml2js from 'xml2js';
+import logger from '../logger';
 
 const UPDATE_INTERVAL_MSEC = 24 * 3600 * 1000; // how often to download new mapping in milliseconds
 // originally at https://raw.githubusercontent.com/ScudLee/anime-lists/master/anime-list.xml
 const MAPPING_URL =
   'https://raw.githubusercontent.com/Anime-Lists/anime-lists/master/anime-list.xml';
-const LOCAL_PATH = process.env.CONFIG_DIRECTORY
-  ? `${process.env.CONFIG_DIRECTORY}/anime-list.xml`
-  : path.join(__dirname, '../../config/anime-list.xml');
 
 const mappingRegexp = new RegExp(/;[0-9]+-([0-9]+)/g);
 
@@ -67,9 +59,6 @@ class AnimeListMapping {
   private loadFromFile = async () => {
     logger.info('Loading mapping file', { label: 'Anime-List Sync' });
     try {
-      const mappingStat = await fsp.stat(LOCAL_PATH);
-      const file = await fsp.readFile(LOCAL_PATH);
-      const xml = (await xml2js.parseStringPromise(file)) as AnimeList;
 
       this.mapping = {};
       this.specials = {};
@@ -189,23 +178,6 @@ class AnimeListMapping {
     this.syncing = true;
     try {
       // check if local file is not "expired" yet
-      if (fs.existsSync(LOCAL_PATH)) {
-        const now = new Date();
-        const stat = await fsp.stat(LOCAL_PATH);
-        if (now.getTime() - stat.mtime.getTime() < UPDATE_INTERVAL_MSEC) {
-          if (!this.isLoaded()) {
-            // no need to download, but make sure file is loaded
-            await this.loadFromFile();
-          } else if (
-            this.mappingModified &&
-            stat.mtime.getTime() > this.mappingModified.getTime()
-          ) {
-            // if file has been modified externally since last load, reload it
-            await this.loadFromFile();
-          }
-          return;
-        }
-      }
       await this.downloadFile();
       await this.loadFromFile();
     } finally {

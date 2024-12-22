@@ -3,47 +3,15 @@ import { getRepository } from '@server/datasource';
 import Media from '@server/entity/Media';
 import { User } from '@server/entity/User';
 import type { BlacklistItem } from '@server/interfaces/api/blacklistInterfaces';
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  Index,
-  JoinColumn,
-  ManyToOne,
-  OneToOne,
-  PrimaryGeneratedColumn,
-  Unique,
-} from 'typeorm';
 import type { ZodNumber, ZodOptional, ZodString } from 'zod';
 
-@Entity()
-@Unique(['tmdbId'])
 export class Blacklist implements BlacklistItem {
-  @PrimaryGeneratedColumn()
   public id: number;
-
-  @Column({ type: 'varchar' })
   public mediaType: MediaType;
-
-  @Column({ nullable: true, type: 'varchar' })
   title?: string;
-
-  @Column()
-  @Index()
   public tmdbId: number;
-
-  @ManyToOne(() => User, (user) => user.id, {
-    eager: true,
-  })
   user: User;
-
-  @OneToOne(() => Media, (media) => media.blacklist, {
-    onDelete: 'CASCADE',
-  })
-  @JoinColumn()
   public media: Media;
-
-  @CreateDateColumn()
   public createdAt: Date;
 
   constructor(init?: Partial<Blacklist>) {

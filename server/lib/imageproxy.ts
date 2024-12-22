@@ -1,4 +1,4 @@
-import logger from '@server/logger';
+import logger from '../logger';
 import type { RateLimitOptions } from '@server/utils/rateLimit';
 import rateLimit from '@server/utils/rateLimit';
 import { createHash } from 'crypto';

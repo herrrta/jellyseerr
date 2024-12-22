@@ -1,7 +1,7 @@
 import type { DiscoverSliderType } from '@server/constants/discover';
 import { defaultSliders } from '@server/constants/discover';
 import { getRepository } from '@server/datasource';
-import logger from '@server/logger';
+import logger from '../logger';
 import {
   Column,
   CreateDateColumn,

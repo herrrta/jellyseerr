@@ -4,7 +4,7 @@ import { getRepository } from '@server/datasource';
 import Media from '@server/entity/Media';
 import { User } from '@server/entity/User';
 import type { WatchlistItem } from '@server/interfaces/api/discoverInterfaces';
-import logger from '@server/logger';
+import logger from '../logger';
 import {
   Column,
   CreateDateColumn,

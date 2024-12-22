@@ -15,7 +15,7 @@ import SeasonRequest from '@server/entity/SeasonRequest';
 import { User } from '@server/entity/User';
 import type { RadarrSettings, SonarrSettings } from '@server/lib/settings';
 import { getSettings } from '@server/lib/settings';
-import logger from '@server/logger';
+import logger from '../logger';
 import { getHostname } from '@server/utils/getHostname';
 
 class AvailabilitySync {

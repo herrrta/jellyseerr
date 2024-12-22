@@ -1,4 +1,4 @@
-import logger from '@server/logger';
+import logger from '../logger';
 import ServarrBase from './base';
 
 export interface RadarrMovieOptions {

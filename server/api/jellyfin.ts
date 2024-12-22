@@ -2,7 +2,7 @@
 import ExternalAPI from '@server/api/externalapi';
 import { ApiErrorCode } from '@server/constants/error';
 import availabilitySync from '@server/lib/availabilitySync';
-import logger from '@server/logger';
+import logger from '../logger';
 import { ApiError } from '@server/types/error';
 import { getAppVersion } from '@server/utils/appVersion';
 

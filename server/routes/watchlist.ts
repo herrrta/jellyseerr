@@ -3,7 +3,7 @@ import {
   NotFoundError,
   Watchlist,
 } from '@server/entity/Watchlist';
-import logger from '@server/logger';
+import logger from '../logger';
 import { Router } from 'express';
 import { QueryFailedError } from 'typeorm';
 

@@ -1,7 +1,7 @@
 import ExternalAPI from '@server/api/externalapi';
 import type { User } from '@server/entity/User';
 import type { TautulliSettings } from '@server/lib/settings';
-import logger from '@server/logger';
+import logger from '../logger';
 import { uniqWith } from 'lodash';
 
 export interface TautulliHistoryRecord {
