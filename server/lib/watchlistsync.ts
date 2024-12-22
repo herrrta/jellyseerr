@@ -10,7 +10,7 @@ import {
   RequestPermissionError,
 } from '@server/entity/MediaRequest';
 import { User } from '@server/entity/User';
-import logger from '@server/logger';
+import logger from '../logger';
 import { Permission } from './permissions';
 
 class WatchlistSync {

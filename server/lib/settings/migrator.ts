@@ -1,5 +1,5 @@
 import type { AllSettings } from '@server/lib/settings';
-import logger from '@server/logger';
+import logger from '../logger';
 import fs from 'fs/promises';
 import path from 'path';
 

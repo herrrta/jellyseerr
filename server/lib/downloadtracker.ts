@@ -2,7 +2,7 @@ import RadarrAPI from '@server/api/servarr/radarr';
 import SonarrAPI from '@server/api/servarr/sonarr';
 import { MediaType } from '@server/constants/media';
 import { getSettings } from '@server/lib/settings';
-import logger from '@server/logger';
+import logger from '../logger';
 import { uniqWith } from 'lodash';
 
 interface EpisodeNumberResult {

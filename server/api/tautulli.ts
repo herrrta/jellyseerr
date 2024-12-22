@@ -1,6 +1,6 @@
 import type { User } from '@server/entity/User';
 import type { TautulliSettings } from '@server/lib/settings';
-import logger from '@server/logger';
+import logger from '../logger';
 import { requestInterceptorFunction } from '@server/utils/customProxyAgent';
 import type { AxiosInstance } from 'axios';
 import axios from 'axios';

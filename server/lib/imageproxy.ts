@@ -1,4 +1,4 @@
-import logger from '@server/logger';
+import logger from '../logger';
 import { requestInterceptorFunction } from '@server/utils/customProxyAgent';
 import axios from 'axios';
 import rateLimit, { type rateLimitOptions } from 'axios-rate-limit';

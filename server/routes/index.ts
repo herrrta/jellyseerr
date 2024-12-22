@@ -10,7 +10,7 @@ import DiscoverSlider from '@server/entity/DiscoverSlider';
 import type { StatusResponse } from '@server/interfaces/api/settingsInterfaces';
 import { Permission } from '@server/lib/permissions';
 import { getSettings } from '@server/lib/settings';
-import logger from '@server/logger';
+import logger from '../logger';
 import { checkUser, isAuthenticated } from '@server/middleware/auth';
 import { mapWatchProviderDetails } from '@server/models/common';
 import { mapProductionCompany } from '@server/models/Movie';

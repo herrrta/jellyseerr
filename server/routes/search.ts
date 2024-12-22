@@ -2,7 +2,7 @@ import TheMovieDb from '@server/api/themoviedb';
 import type { TmdbSearchMultiResponse } from '@server/api/themoviedb/interfaces';
 import Media from '@server/entity/Media';
 import { findSearchProvider } from '@server/lib/search';
-import logger from '@server/logger';
+import logger from '../logger';
 import { mapSearchResults } from '@server/models/Search';
 import { Router } from 'express';
 

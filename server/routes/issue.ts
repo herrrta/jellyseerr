@@ -5,7 +5,7 @@ import IssueComment from '@server/entity/IssueComment';
 import Media from '@server/entity/Media';
 import type { IssueResultsResponse } from '@server/interfaces/api/issueInterfaces';
 import { Permission } from '@server/lib/permissions';
-import logger from '@server/logger';
+import logger from '../logger';
 import { isAuthenticated } from '@server/middleware/auth';
 import { Router } from 'express';
 

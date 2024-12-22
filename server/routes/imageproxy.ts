@@ -1,5 +1,5 @@
 import ImageProxy from '@server/lib/imageproxy';
-import logger from '@server/logger';
+import logger from '../logger';
 import { Router } from 'express';
 
 const router = Router();

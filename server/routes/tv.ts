@@ -1,13 +1,11 @@
 import RottenTomatoes from '@server/api/rating/rottentomatoes';
 import TheMovieDb from '@server/api/themoviedb';
 import { MediaType } from '@server/constants/media';
-import { getRepository } from '@server/datasource';
 import Media from '@server/entity/Media';
 import { Watchlist } from '@server/entity/Watchlist';
-import logger from '@server/logger';
+import logger from '../logger';
 import { mapTvResult } from '@server/models/Search';
 import { mapSeasonWithEpisodes, mapTvDetails } from '@server/models/Tv';
-import { Router } from 'express';
 
 const tvRoutes = Router();
 

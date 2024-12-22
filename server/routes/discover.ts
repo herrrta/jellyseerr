@@ -12,7 +12,7 @@ import type {
   WatchlistResponse,
 } from '@server/interfaces/api/discoverInterfaces';
 import { getSettings } from '@server/lib/settings';
-import logger from '@server/logger';
+import logger from '../logger';
 import { mapProductionCompany } from '@server/models/Movie';
 import {
   mapCollectionResult,
