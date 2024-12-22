@@ -1,6 +1,3 @@
-import ExternalAPI from '@server/api/externalapi';
-import cacheManager from '@server/lib/cache';
-
 type IMDBRadarrProxyResponse = IMDBMovie[];
 
 interface IMDBMovie {
@@ -146,54 +143,3 @@ export interface IMDBRating {
   url: string;
   criticsScore: number;
 }
-
-/**
- * This is a best-effort API. The IMDB API is technically
- * private and getting access costs money/requires approval.
- *
- * Radarr hosts a public proxy that's in use by all Radarr instances.
- */
-class IMDBRadarrProxy extends ExternalAPI {
-  constructor() {
-    super(
-      'https://api.radarr.video/v1',
-      {},
-      {
-        nodeCache: cacheManager.getCache('imdb').data,
-      }
-    );
-  }
-
-  /**
-   * Ask the Radarr IMDB Proxy for the movie
-   *
-   * @param IMDBid Id of IMDB movie
-   */
-  public async getMovieRatings(IMDBid: string): Promise<IMDBRating | null> {
-    try {
-      const data = await this.get<IMDBRadarrProxyResponse>(
-        `/movie/imdb/${IMDBid}`
-      );
-
-      if (
-        !data?.length ||
-        data[0].ImdbId !== IMDBid ||
-        !data[0].MovieRatings.Imdb
-      ) {
-        return null;
-      }
-
-      return {
-        title: data[0].Title,
-        url: `https://www.imdb.com/title/${data[0].ImdbId}`,
-        criticsScore: data[0].MovieRatings.Imdb.Value,
-      };
-    } catch (e) {
-      throw new Error(
-        `[IMDB RADARR PROXY API] Failed to retrieve movie ratings: ${e.message}`
-      );
-    }
-  }
-}
-
-export default IMDBRadarrProxy;
