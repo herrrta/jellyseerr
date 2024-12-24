@@ -1,5 +1,6 @@
 import { UserType } from '@server/constants/user';
 import { Watchlist } from '@server/entity/Watchlist';
+import {hasPermission, Permission, PermissionCheckOptions} from "@server/lib/permissions";
 import Issue from './Issue';
 import { MediaRequest } from './MediaRequest';
 import { UserSettings } from './UserSettings';
@@ -85,5 +86,12 @@ export class User {
     );
 
     return filtered;
+  }
+
+  public hasPermission(
+    permissions: Permission | Permission[],
+    options?: PermissionCheckOptions
+  ): boolean {
+    return !!hasPermission(permissions, this.permissions, options);
   }
 }
