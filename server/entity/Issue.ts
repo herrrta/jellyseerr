@@ -27,7 +27,6 @@ class Issue {
 
   public updatedAt: Date;
 
-  @AfterLoad()
   sortComments() {
     this.comments?.sort((a, b) => a.id - b.id);
   }
