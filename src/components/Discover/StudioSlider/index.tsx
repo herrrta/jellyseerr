@@ -65,4 +65,10 @@ export const studios: Studio[] = [
       '/2Tc1P3Ac8M479naPp1kYT3izLS5.png',
     id: 9993,
   },
+  {
+    name: 'A24',
+    image:
+      '/1ZXsGaFPgrgS6ZZGS37AqD5uU12.png',
+    id: 41077,
+  },
 ];
